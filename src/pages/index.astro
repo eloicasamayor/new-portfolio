@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+import FileMessage from '../components/FileMessage.astro'
+---
+
+<Layout title="Portfolio eloice">
+	<main>
+		<section class="w-[770px] mx-auto py-44">
+			
+		<div class="flex items-start gap-2.5 py-10">
+			<img
+					class="rounded-full w-16 h-16"
+					src="https://avatars.githubusercontent.com/u/37459666?v=4"
+					alt="eloice photo">
+			<div class="flex flex-col w-full leading-1.5 p-4 border-gray-200 bg-gray-900 rounded-e-xl rounded-es-xl dark:bg-gray-700">
+					<h1 class="text-white text-5xl font-bold flex-col gap-x-4 ">
+							Hola, soy Eloi Casamayor 
+					</h1>
+					<a class="pb-10" href="http://www.linkedin.com/in/eloicasamayor"><Badge>Disponible para trabajar</Badge></a>
+				<h2 class="text-sm font-normal py-2.5 text-gray-600 dark:text-white">Con mas de 2 años de experiéncia como desarrollador frontend y +8 como desarrollador en general, mes.. </h2>
+				<span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+			</div>
+			</div>
+
+   <FileMessage />
+   
+		</section>
+	</main>
+</Layout>
