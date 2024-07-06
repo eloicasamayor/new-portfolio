@@ -20,8 +20,7 @@ import Header from '../components/Header.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<div class="relative h-full w-full  "></div>
+	<body class="dark:bg-zinc-900 text-black dark:text-white">
 		<Header />
 		<slot />
 	</body>
@@ -37,7 +36,9 @@ import Header from '../components/Header.astro';
 	}
 
 	body {
-		background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	}
+	
+	a {
 	}
 
 
@@ -45,12 +46,12 @@ import Header from '../components/Header.astro';
         html {
           scroll-behavior: auto;
         }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: rgba(255, 255, 255, 0.9);
-		  background-image: linear-gradient(to right, #434343 0%, black 100%);
-        }
-      }
+	}
+	
+	@media (prefers-color-scheme: dark) {
+		body {
+			/* background-color: black; */
+			/*color: rgba(255, 255, 255, 0.9);*/
+		}
+	}
 </style>
