@@ -1,0 +1,19 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const experience = [
+    {
+        date: 'February 2022',
+        title: 'Frontend developer at NPAW',
+        description: ' nananananansdlfkasjdflas fdñklash flksdjh flkasjdfh laskdjfh lsakjdfh dskf'
+    }
+]
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700">    
+    {experience.map(item => {
+        console.log(item)
+        return <ExperienceItem {...item} />
+    })}              
+</ol>
+
