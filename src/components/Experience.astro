@@ -3,13 +3,36 @@ import ExperienceItem from "./ExperienceItem.astro"
 
 const experience = [
     {
-        date: 'February 2022',
-        title: 'Frontend developer at NPAW',
-        description: ' nananananansdlfkasjdflas fdñklash flksdjh flkasjdfh laskdjfh lsakjdfh dskf'
+        date: ' june 2023  (current)',
+        title: 'Frontend web developer at VASS',
+        description: "Develops and maintains the frontend of CaixaBank's ATM..Coordinates with UX and business teams for new funcionalities..Coordinates with UX and business teams for new funcionalities..Maintains legacy code..Responsible for maintaining critical app components crucial to the bank's operations.",
+        link: 'www.vasscompany.com'   
+    },
+    {
+        date: 'May 2022 to june 2023',
+        title: 'Frontend web developer at NPAW',
+        description: 'Data visualization apps development. Uses React, Redux, Echarts and other libs. Agile methodology using Jira.',
+        link: 'www.npaw.com'
+    },
+    {
+        date: 'September 2021 to May 2022',
+        title: 'Databases teacher at Escola Pia Diputació',
+        description: 'CFGS "Multiplatform Apps Development Professional Degree". Teaches databases design principles. Instructs SQL and Pl/PgSQL programming.'
+    },
+    {
+        date: 'Sept. 2015 to June 2021',
+        title: 'Junior unity developer at Walk3D',
+        description: 'Designs and creates software solutions for engineering and marketing fields. Develops with unity and third party libraries.'
+    },
+    {
+        date: 'January to June 2014',
+        title: 'Web developer intern at LaGenciaWeb',
+        description: 'Builds websites using WordPress and Joomla'
     }
 ]
 ---
 
+<h2 class="text-3xl font-bold">Experiencia laboral</h2>
 <ol class="relative border-s border-gray-200 dark:border-gray-700">    
     {experience.map(item => {
         console.log(item)
