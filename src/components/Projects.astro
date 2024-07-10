@@ -1,0 +1,25 @@
+---
+import Badge from '../components/Badge.astro';
+const PROJECTS = [
+    {
+        title: 'My League',
+        description: 'Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, redux y tailwind para el frontend y supabase para el backend.',
+        lnnk: '#',
+        github: '#',
+        image: '/new-portfolio/projects/my-league.webp',
+        tags: ['react', 'redux', 'tailwind', 'supabase']
+    }
+]
+---
+<h2 class="text-3xl font-bold">Proyectos</h2>
+
+{
+    PROJECTS.map(({title, description, tags, image}) => (
+        <article>
+            <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            {tags.map( tag => <Badge>{tag}</Badge>)}
+            <img src={image} alt={'captura de pantalla del proyecto ' + title} />
+        </article>
+    ))
+}
