@@ -9,6 +9,8 @@ import Mail from '../icons/Mail.astro';
 
 import ContactPill from '../components/ContactPill.astro';
 import Experience from '../components/Experience.astro';
+import mainImage from '../images/mainImage.png'
+import Image from 'astro/components/Image.astro';
 ---
 
 <Layout title="Portfolio eloice">
@@ -16,16 +18,16 @@ import Experience from '../components/Experience.astro';
 		<section id="top" class="section pt-16 md:pt-36 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
 
 			<img
-						class="rounded-full w-24 h-24"
-						src="https://avatars.githubusercontent.com/u/37459666?v=4"
-						alt="eloice photo">
+				src={mainImage.src}
+				class="rounded-full w-24 h-24border-4 bg-rose-100"
+				alt="foto de Eloi Casamayor">
 						
 			<h1 class="text-black dark:text-white text-5xl font-bold flex-col gap-x-4">
 				Hola, soy Eloi Casamayor 
 			</h1>
 			<a class="pb-10 text-center" href="http://www.linkedin.com/in/eloicasamayor"><Badge>Disponible para trabajar</Badge></a>
 			<p class="font-normal py-2.5 text-xl text-gray-600 dark:text-white">
-				<b>8 años de experiencia</b> como desarrollador. Ahora me dedico al desarrollo frontend con <b>TypeScript y React</b>. Previamente he desarrollado con C# usando Unity.
+				<b class="text-rose-600">8 años de experiencia</b> como desarrollador. Ahora me dedico al desarrollo frontend con <b class="text-rose-600">TypeScript y React</b>. Previamente he desarrollado con C# usando Unity.
 			</p>
 			
 			<nav class="flex gap-x-2">
