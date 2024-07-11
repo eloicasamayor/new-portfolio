@@ -1,5 +1,6 @@
 ---
 const THEMES = ["català", "castellano", "English"]
+
 ---
 
 <div class="relative ml-1 mr-1">
@@ -8,9 +9,10 @@ const THEMES = ["català", "castellano", "English"]
     class="appearance-none border-none flex hover:scale-125 transition"
   >
     <span class="sr-only">Elige el tema</span>
-    <li id="ca">català</li>
-    <li id="es">castellano</li>
-    <li id="en">english</li>
+    <a id="ca" href={import.meta.env.BASE_URL+"/"}>català</a>
+    <a id="es" href={import.meta.env.BASE_URL+"/es/"}>castellano</a>
+    <a id="en" href={import.meta.env.BASE_URL+"/en/"}>english</a>
+    <p>Preferred:{Astro.preferredLocale}</p>
   </button>
   <div
     id="themes-menu"
