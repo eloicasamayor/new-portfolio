@@ -7,8 +7,8 @@ export default defineConfig({
   integrations: [tailwind()],
   site: "https://eloicasamayor.github.io",
   base: "new-portfolio",
-  defaultLocale: "ca-ES",
-  locales: ["es", "en", "ca-ES"],
+  defaultLocale: "ca",
+  locales: ["es", "en", "ca", "ca-ES"],
   routing: {
     prefixDefaultLocale: false,
   },

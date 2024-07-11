@@ -8,11 +8,13 @@ const THEMES = ["català", "castellano", "English"]
     id="lang-toggle-btn"
     class="appearance-none border-none flex hover:scale-125 transition"
   >
-    <span class="sr-only">Elige el tema</span>
+  <button onclick="getLanguage()">nanana</button>
+    <span class="sr-only" >Elige idioma</span>
     <a id="ca" href={import.meta.env.BASE_URL+"/"}>català</a>
     <a id="es" href={import.meta.env.BASE_URL+"/es/"}>castellano</a>
     <a id="en" href={import.meta.env.BASE_URL+"/en/"}>english</a>
     <p>Preferred:{Astro.preferredLocale}</p>
+    <p id="browser-lang"></p>
   </button>
   <div
     id="themes-menu"
@@ -50,7 +52,10 @@ const THEMES = ["català", "castellano", "English"]
 </style>
 
 <script is:inline>
-  const lang = navigator.language || navigator.userLanguage
-
+  function getLanguage () {
+    const lang = navigator.language || navigator.userLanguage
+    document.querySelector('#browser-lang').textContent = lang
+    console.log('lang = '+ lang)
+  }
   
 </script>
