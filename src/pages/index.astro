@@ -7,7 +7,7 @@ import Github from '../icons/Github.astro';
 import Mail from '../icons/Mail.astro';
 import Download from '../icons/Download.astro';
 
-
+import Header from '../components/Header.astro';
 import ContactPill from '../components/ContactPill.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
@@ -18,6 +18,7 @@ const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto contai
 ---
 
 <Layout title="Portfolio eloice">
+	<Header lang='ca'></Header>
 	<main class="px-3 lg:px-4">
 		<section id="top" class={sectionClasses}>
 
@@ -44,17 +45,18 @@ const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto contai
 				<ContactPill href="mailto:eloi.casamayor@gmail.com">
 					<Mail  class="w-6 h-6"/> Correu electrònic
 				</ContactPill>
-				<ContactPill href="mailto:eloi.casamayor@gmail.com">
+				<ContactPill href="#">
 					<Download  class="w-6 h-6"/> Currículum Vitae
 				</ContactPill>
 			</nav>
 					
 		</section>
-		<section id="experiencia" class={sectionClasses}>
-			<Experience />
+		<section id="experience" class={sectionClasses}>
+			<Experience lang='ca' />
 		</section>
 		<section id="projects" class={sectionClasses}>
-			<Projects />
+			<Projects lang='ca' />
 		</section>
 	</main>
+	<!-- <Footer></Footer> -->
 </Layout>

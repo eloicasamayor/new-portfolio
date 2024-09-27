@@ -1,16 +1,32 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
+function getHome(lang){
+    if (lang === 'es') return 'Inicio'
+    if (lang === 'en') return 'Home'
+    return 'Inici'
+}
 
+function getExperience(lang){
+    if (lang === 'es') return 'Experiencia'
+    if (lang === 'en') return 'Experience'
+    return 'Experiència'
+}
+
+function getProjects(lang){
+    if (lang === 'es') return 'Proyectos'
+    if (lang === 'en') return 'Projects'
+    return 'Projectes'
+}
 ---
 
 <header class="flex items-center py-3 mx-auto justify-center w-full">
     <nav class="flex flex-row gap-x-10 opacity-80">
-        <a href="#top">Inicio</a>
+        <a href="#top">{() => getHome(Astro.props.lang)}</a>
         <!--<a href="#curriculum">Curriculum</a> -->
-        <a href="#experiencia">Experiencia</a>
+        <a href="#experience">Experience</a>
         <!-- <a href="#sobre-mi">Sobre mi</a> -->
-        <a href="#proyectos">Proyectos</a>
+        <a href="#projects">Projects</a>
         <ThemeToggle />
         <LanguageToggle />
     </nav>

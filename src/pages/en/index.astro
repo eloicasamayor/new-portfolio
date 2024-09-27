@@ -5,8 +5,9 @@ import FileMessage from '../../components/FileMessage.astro'
 import Linkedin from '../../icons/Linkedin.astro';
 import Github from '../../icons/Github.astro';
 import Mail from '../../icons/Mail.astro';
+import Download from '../../icons/Download.astro';
 
-
+import Header from '../../components/Header.astro';
 import ContactPill from '../../components/ContactPill.astro';
 import Experience from '../../components/Experience.astro';
 import Projects from '../../components/Projects.astro';
@@ -16,7 +17,7 @@ import Image from 'astro/components/Image.astro';
 const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
 ---
 <Layout title="Portfolio eloice">
-	<main class="px-3 lg:px-4">
+	<Header lang='en'></Header>
 		<section id="top" class={sectionClasses}>
 
 			<img
@@ -27,7 +28,7 @@ const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto contai
 			<h1 class="text-black dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-col gap-x-4">
 				Hey, I am Eloi Casamayor 
 			</h1>
-			<a class="pb-10 text-center" href="http://www.linkedin.com/in/eloicasamayor"><Badge>Disponible para trabajar</Badge></a>
+			<a class="pb-10 text-center" href="http://www.linkedin.com/in/eloicasamayor"><Badge>Available for work</Badge></a>
 			<h2 class="font-normal py-2.5 text-xl text-gray-600 dark:text-white">
 				<b class="text-rose-600">8 years of experience</b> as a developer. Now I am dedicated to frontend development with <b class="text-rose-600">TypeScript and React</b>. I have previously developed with C# using Unity.
 			</h2>
@@ -40,20 +41,20 @@ const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto contai
 					<Github  class="w-6 h-6"/> GitHub
 				</ContactPill>
 				<ContactPill href="mailto:eloi.casamayor@gmail.com">
-					<Mail  class="w-6 h-6"/> Correo electrónico
+					<Mail  class="w-6 h-6"/> Email
+				</ContactPill>
+				<ContactPill href="#">
+					<Download  class="w-6 h-6"/> Currículum Vitae
 				</ContactPill>
 			</nav>
 					
 		</section>
-		<section id="curriculum" class={sectionClasses}>
-			<h2 class="text-3xl font-bold">Currículum Vitae</h2>
-			<FileMessage />
-		</section>
-		<section id="experiencia" class={sectionClasses}>
-			<Experience />
+		<section id="experience" class={sectionClasses}>
+			<Experience lang='en' />
 		</section>
 		<section id="projects" class={sectionClasses}>
-			<Projects />
+			<Projects lang='en' />
 		</section>
+		<!-- <Footer></Footer> -->
 	</main>
 </Layout>

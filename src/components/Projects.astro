@@ -1,20 +1,42 @@
 ---
 import Badge from '../components/Badge.astro';
-const PROJECTS = [
-    {
-        title: 'My League',
-        description: 'Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, redux y tailwind para el frontend y supabase para el backend.',
-        lnnk: '#',
-        github: '#',
-        image: '/new-portfolio/projects/my-league.webp',
-        tags: ['react', 'redux', 'tailwind', 'supabase']
-    }
-]
+const PROJECTS = {
+    es: [
+        {
+            title: 'My League',
+            description: 'Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, Redux y Tailwind para el frontend y Supabase para el backend.',
+            link: 'my-league.netlify.app',
+            github: 'https://github.com/eloicasamayor/my-league/',
+            image: '/new-portfolio/projects/my-league.webp',
+            tags: ['react', 'redux', 'tailwind', 'supabase']
+        }
+    ],
+    ca: [
+        {
+            title: 'My League',
+            description: 'Plataforma d\'administració i consulta de dades, resultats i estadístiques de tornejos de futbol. Desenvolupat amb React, Redux i Tailwind per al frontend i Supabase per al backend.',
+            link: 'my-league.netlify.app',
+            github: 'https://github.com/eloicasamayor/my-league/',
+            image: '/new-portfolio/projects/my-league.webp',
+            tags: ['react', 'redux', 'tailwind', 'supabase']
+        }
+    ],
+    en: [
+        {
+            title: 'My League',
+            description: 'Management and data querying platform for football tournament results and statistics. Developed with React, Redux, and Tailwind for the frontend and Supabase for the backend.',
+            link: 'my-league.netlify.app',
+            github: 'https://github.com/eloicasamayor/my-league/',
+            image: '/new-portfolio/projects/my-league.webp',
+            tags: ['react', 'redux', 'tailwind', 'supabase']
+        }
+    ]
+}
 ---
 <h2 class="text-3xl font-bold">Proyectos</h2>
 
 {
-    PROJECTS.map(({title, description, tags, image}) => (
+    PROJECTS[Astro.props.lang].map(({title, description, tags, image}) => (
         <article>
             <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>

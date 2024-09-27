@@ -5,8 +5,9 @@ import FileMessage from '../../components/FileMessage.astro'
 import Linkedin from '../../icons/Linkedin.astro';
 import Github from '../../icons/Github.astro';
 import Mail from '../../icons/Mail.astro';
+import Download from '../../icons/Download.astro'
 
-
+import Header from '../../components/Header.astro';
 import ContactPill from '../../components/ContactPill.astro';
 import Experience from '../../components/Experience.astro';
 import Projects from '../../components/Projects.astro';
@@ -16,6 +17,7 @@ import Image from 'astro/components/Image.astro';
 const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
 ---
 <Layout title="Portfolio eloice">
+	<Header lang='es'></Header>
 	<main class="px-3 lg:px-4">
 		<section id="top" class={sectionClasses}>
 
@@ -42,18 +44,18 @@ const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto contai
 				<ContactPill href="mailto:eloi.casamayor@gmail.com">
 					<Mail  class="w-6 h-6"/> Correo electrónico
 				</ContactPill>
+				<ContactPill href="#">
+					<Download  class="w-6 h-6"/> Currículum Vitae
+				</ContactPill>
 			</nav>
 					
 		</section>
-		<section id="curriculum" class={sectionClasses}>
-			<h2 class="text-3xl font-bold">Currículum Vitae</h2>
-			<FileMessage />
-		</section>
-		<section id="experiencia" class={sectionClasses}>
-			<Experience />
+		<section id="experience" class={sectionClasses}>
+			<Experience lang='es' />
 		</section>
 		<section id="projects" class={sectionClasses}>
-			<Projects />
+			<Projects lang='es'/>
 		</section>
 	</main>
+	<!-- <Footer></Footer> -->
 </Layout>

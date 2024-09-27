@@ -1,59 +1,22 @@
 ---
-const THEMES = ["català", "castellano", "English"]
-
+import World from '../icons/World.astro'
 ---
 
 <div class="relative ml-1 mr-1">
   <button
     id="lang-toggle-btn"
     class="appearance-none border-none flex hover:scale-125 transition"
-  >
-  <button>
-    <span class="sr-only" >Elige idioma</span>
-    <a id="ca" href={import.meta.env.BASE_URL+"/"}>català</a>
-    <a id="es" href={import.meta.env.BASE_URL+"/es/"}>castellano</a>
-    <a id="en" href={import.meta.env.BASE_URL+"/en/"}>english</a>
+  ><World class="theme-toggle-icon size-5 transition-all hover:scale-125" />
+    <div class="hidden absolute top-full left-1/2 transform -translate-x-1/2 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 shadow-md">
+      <a id="ca" href={import.meta.env.BASE_URL+"/"} class="block px-2 py-1 hover:bg-neutral-400/40">català</a>
+      <a id="es" href={import.meta.env.BASE_URL+"/es/"} class="block px-2 py-1 hover:bg-neutral-400/40">castellano</a>
+      <a id="en" href={import.meta.env.BASE_URL+"/en/"} class="block px-2 py-1 hover:bg-neutral-400/40">english</a>
+    </div>
   </button>
-  <div
-    id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-  >
-    <ul>
-      {
-        THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
-            {theme}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
 </div>
 
 <style>
-  #themes-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+  #lang-toggle-btn:hover .hidden {
+    display: block;
   }
 </style>
-
-<script is:inline>
-  function getLanguage () {
-    const lang = navigator.language || navigator.userLanguage
-    document.querySelector('#browser-lang').textContent = lang
-    console.log('lang = '+ lang)
-  }
-  
-</script>
