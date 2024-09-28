@@ -1,7 +1,18 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
 
-const experience = {
+type ExperienceItemT = {
+    date: string;
+    title: string;
+    description: string;
+};
+
+type Experience = {
+    en: ExperienceItemT[];
+    es: ExperienceItemT[];
+    ca: ExperienceItemT[];
+};
+const experience: Experience = {
     en: [
         {
             date: ' june 2023  (current)',
