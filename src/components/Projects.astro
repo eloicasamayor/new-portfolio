@@ -13,6 +13,7 @@ type Projects = {
     es: ProjectsItemT[];
     ca: ProjectsItemT[];
 };
+type Language = 'en' | 'es' | 'ca';
 
 const PROJECTS: Projects = {
     es: [
@@ -50,7 +51,7 @@ const PROJECTS: Projects = {
 <h2 class="text-3xl font-bold">Proyectos</h2>
 
 {
-    PROJECTS[Astro.props.lang].map(({title, description, tags, image}) => (
+    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image}) => (
         <article>
             <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>

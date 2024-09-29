@@ -1,6 +1,8 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
 
+type Language = 'en' | 'es' | 'ca';
+
 type ExperienceItemT = {
     date: string;
     title: string;
@@ -99,7 +101,7 @@ const experience: Experience = {
 
 <h2 class="text-3xl font-bold">Experiencia laboral</h2>
 <ol class="relative border-s border-gray-200 dark:border-gray-700">    
-    {experience[Astro.props.lang].map(item => {
+    {experience[Astro.props.lang as Language].map((item: ExperienceItemT) => {
         console.log(item)
         return <ExperienceItem {...item} />
     })}              
