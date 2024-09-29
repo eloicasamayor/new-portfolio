@@ -1,32 +1,16 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import LanguageToggle from "./LanguageToggle.astro";
-function getHome(lang: string){
-    if (lang === 'es') return 'Inicio'
-    if (lang === 'en') return 'Home'
-    return 'Inici'
-}
-
-function getExperience(lang: string){
-    if (lang === 'es') return 'Experiencia'
-    if (lang === 'en') return 'Experience'
-    return 'Experiència'
-}
-
-function getProjects(lang: string) {
-    if (lang === 'es') return 'Proyectos'
-    if (lang === 'en') return 'Projects'
-    return 'Projectes'
-}
+import {getHome, getExperience, getProjects} from "../utils/translate.ts"
 ---
 
-<header class="section scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl flex flex-row h-14">
-        <nav class="flex flex-row gap-x-10 opacity-80">
+<header class="section scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl flex flex-row h-14 justify-between">
+        <nav class="flex flex-row gap-x-10 opacity-80 items-center">
             <a href="#top">{getHome(Astro.props.lang)}</a>
             <a href="#experience">{getExperience(Astro.props.lang)}</a>
             <a href="#projects">{getProjects(Astro.props.lang)}</a>
         </nav>
-        <nav class="flex flex-row">
+        <nav class="flex flex-row items-center">
             <ThemeToggle />
             <LanguageToggle />
         </nav>

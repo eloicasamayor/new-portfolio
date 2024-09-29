@@ -1,6 +1,20 @@
 ---
 import Badge from '../components/Badge.astro';
-const PROJECTS = {
+type ProjectsItemT = {
+    title: string;
+    description: string;
+    link: string;
+    github: string;
+    image: string;
+    tags: [string];
+};
+type Projects = {
+    en: ProjectsItemT[];
+    es: ProjectsItemT[];
+    ca: ProjectsItemT[];
+};
+
+const PROJECTS: Projects = {
     es: [
         {
             title: 'My League',
