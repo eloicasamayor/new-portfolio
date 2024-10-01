@@ -2,21 +2,32 @@
 import World from '../icons/World.astro'
 ---
 
-<div class="relative ml-1 mr-1">
-  <button
-    id="lang-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
-  ><World class="theme-toggle-icon size-5 transition-all hover:scale-125" />
-    <div class="hidden absolute top-full left-1/2 transform -translate-x-1/2 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 shadow-md">
-      <a id="ca" href={import.meta.env.BASE_URL+"/"} class="block px-2 py-1 hover:bg-neutral-400/40">català</a>
-      <a id="es" href={import.meta.env.BASE_URL+"/es/"} class="block px-2 py-1 hover:bg-neutral-400/40">castellano</a>
-      <a id="en" href={import.meta.env.BASE_URL+"/en/"} class="block px-2 py-1 hover:bg-neutral-400/40">english</a>
-    </div>
-  </button>
+<div class="relative ml-1 mr-1 size-5">
+  <input type="checkbox" id="lang-toggle" class="size-5 appearance-none"/>
+  <World id="icon-world" class=" absolute top-0 z-10 size-5 transition-all hover:scale-125 dark:text-white"/>
+   <div id="menu" class="absolute top-full right-0 transform text-sm p-1 min-w-[6rem] rounded-md border border-gray-100 shadow-md">
+    <a id="ca" href={import.meta.env.BASE_URL+"/"} class="block px-2 py-1 hover:bg-neutral-400/40">català</a>
+    <a id="es" href={import.meta.env.BASE_URL+"/es/"} class="block px-2 py-1 hover:bg-neutral-400/40">castellano</a>
+    <a id="en" href={import.meta.env.BASE_URL+"/en/"} class="block px-2 py-1 hover:bg-neutral-400/40">english</a>
+  </div>
+ 
 </div>
 
 <style>
-  #lang-toggle-btn:hover .hidden {
+  #lang-toggle + #icon-world + div {
+    display: none;
+  }
+  #lang-toggle:checked + #icon-world + div {
     display: block;
+  }
+  #lang-toggle:checked + #icon-world  {
+    color: rgb(225 29 72 / var(--tw-text-opacity));
+  }
+  #lang-toggle  {
+    filter: hue-rotate(320deg);
+    accent-color: red;
+  }
+  #icon-world {
+    pointer-events: none;
   }
 </style>
