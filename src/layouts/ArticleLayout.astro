@@ -22,7 +22,13 @@ import Footer from '../components/Footer.astro';
 		<title>{title}</title>
 	</head>
 	<body class="bg-zinc-100 dark:bg-zinc-900 text-black dark:text-white">
-		<slot />
+	<Header lang='ca'></Header>
+	<main class="px-3 lg:px-4">
+		<section id="top" class='section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl'>
+			<slot/>
+		</section>
+	</main>
+	<Footer/>
 	</body>
 
 </html>
@@ -35,31 +41,27 @@ import Footer from '../components/Footer.astro';
 		font-family: "Onest Variable", system-ui, sans-serif;
 	}
 
-	body {
-	}
-	
-	a {
-	}
-
 	h1 {
 		@apply text-black dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-col gap-x-4
 	}
 
 	h2 {
-		@apply font-normal py-2.5 text-xl text-gray-600 dark:text-white
+		@apply font-normal py-2.5 text-xl text-gray-600 dark:text-white pt-8
 	}
 
-
-	@media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
+	h2 {
+		@apply font-normal py-2.5 text-lg text-gray-600 dark:text-white pt-8
 	}
-	
-	@media (prefers-color-scheme: dark) {
-		body {
-			/* background-color: black; */
-			/*color: rgba(255, 255, 255, 0.9);*/
-		}
+
+	p {
+		@apply pt-6
+	} 
+
+	li {
+		list-style: circle;
+	}
+
+	ul, ol {
+		@apply pl-4
 	}
 </style>

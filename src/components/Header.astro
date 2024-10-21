@@ -7,9 +7,9 @@ type Language = 'en' | 'es' | 'ca';
 
 <header class="section scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl flex flex-row h-14 justify-between">
         <nav class=" pl-5 flex flex-row gap-x-10 opacity-80 items-center">
-            <a href="#top">{getHome(Astro.props.lang as Language)}</a>
-            <a href="#experience">{getExperience(Astro.props.lang as Language)}</a>
-            <a href="#projects">{getProjects(Astro.props.lang as Language)}</a>
+            <a href=`/new-portfolio/#top`>{getHome(Astro.props.lang as Language)}</a>
+            <a href="/new-portfolio/#experience">{getExperience(Astro.props.lang as Language)}</a>
+            <a href="/new-portfolio/#projects">{getProjects(Astro.props.lang as Language)}</a>
         </nav>
         <nav class="flex flex-row items-center pr-3">
             <ThemeToggle />

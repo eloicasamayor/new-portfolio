@@ -1,4 +1,5 @@
 ---
+import { getExperience } from "../utils/translate";
 import ExperienceItem from "./ExperienceItem.astro"
 
 type Language = 'en' | 'es' | 'ca';
@@ -97,9 +98,16 @@ const experience: Experience = {
         }
     ]
     }
+
+function getExperiencieTitle(lang: string) {
+    debugger
+    if(lang === 'es') return 'Experiencia laboral'
+    if(lang === 'en') return 'Working experience'
+    return 'Experiència laboral'
+}
 ---
 
-<h2 class="text-3xl font-bold">Experiencia laboral</h2>
+<h2 class="text-3xl font-bold">{getExperiencieTitle(Astro.props.lang)}</h2>
 <ol class="relative border-s border-gray-200 dark:border-gray-700">    
     {experience[Astro.props.lang as Language].map((item: ExperienceItemT) => {
         console.log(item)

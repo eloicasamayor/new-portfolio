@@ -4,6 +4,7 @@ type ProjectsItemT = {
     title: string;
     description: string;
     link: string;
+    article: string;
     github: string;
     image: string;
     tags: string[];
@@ -21,6 +22,7 @@ const PROJECTS: Projects = {
             title: 'My League',
             description: 'Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, Redux y Tailwind para el frontend y Supabase para el backend.',
             link: 'my-league.netlify.app',
+            article: 'Llegir article',
             github: 'https://github.com/eloicasamayor/my-league/',
             image: '/new-portfolio/projects/my-league.webp',
             tags: ['react', 'redux', 'tailwind', 'supabase']
@@ -31,6 +33,7 @@ const PROJECTS: Projects = {
             title: 'My League',
             description: 'Plataforma d\'administració i consulta de dades, resultats i estadístiques de tornejos de futbol. Desenvolupat amb React, Redux i Tailwind per al frontend i Supabase per al backend.',
             link: 'my-league.netlify.app',
+            article: 'Leer artículo',
             github: 'https://github.com/eloicasamayor/my-league/',
             image: '/new-portfolio/projects/my-league.webp',
             tags: ['react', 'redux', 'tailwind', 'supabase']
@@ -41,22 +44,34 @@ const PROJECTS: Projects = {
             title: 'My League',
             description: 'Management and data querying platform for football tournament results and statistics. Developed with React, Redux, and Tailwind for the frontend and Supabase for the backend.',
             link: 'my-league.netlify.app',
+            article: 'Read article',
             github: 'https://github.com/eloicasamayor/my-league/',
             image: '/new-portfolio/projects/my-league.webp',
             tags: ['react', 'redux', 'tailwind', 'supabase']
         }
     ]
 }
+function getProjectsTitle(lang: string) {
+    if (lang ==='en') return 'Projects'
+    if (lang ==='es') return 'Proyectos'
+    return 'Projectes'
+}
 ---
-<h2 class="text-3xl font-bold">Proyectos</h2>
+<h2 class="text-3xl font-bold">{getProjectsTitle(Astro.props.lang)}</h2>
 
 {
-    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image}) => (
+    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image, article}) => (
         <article>
             <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
             {tags.map( tag => <Badge>{tag}</Badge>)}
-            <img src={image} alt={'captura de pantalla del proyecto ' + title} />
+            <img class="pb-4 pt-2" src={image} alt={'captura de pantalla del proyecto ' + title} />
+            <a href={'/new-portfolio/my-league'}>
+                <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">{article}</button>
+            </a>
+            <a href={'/new-portfolio/my-league'}>
+                <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">Source code</button>
+                </a>
         </article>
     ))
 }
