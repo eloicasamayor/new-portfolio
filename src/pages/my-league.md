@@ -7,6 +7,8 @@ date: "09 Aug 2022"
 
 # Procés de desenvolupament de myLeague
 
+![Alt Text](../images/my-league-01.gif)
+
 ## Introducció
 
 - <b>Què és "myLeague"?</b>
@@ -205,5 +207,9 @@ slice.js
     }
     details ol li a {
       text-decoration: underline;
+    }
+    img {
+      max-width: 250px;
+      margin: 0 auto;
     }
     </style>

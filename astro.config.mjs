@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 
@@ -10,5 +10,8 @@ export default defineConfig({
   i18n: {
     defaultLocale: "ca",
     locales: ["es", "en", "ca"],
+  },
+  image: {
+    service: passthroughImageService(),
   },
 });
