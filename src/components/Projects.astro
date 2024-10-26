@@ -64,7 +64,7 @@ function getProjectsTitle(lang: string) {
 <h2 class="text-3xl font-bold">{getProjectsTitle(Astro.props.lang)}</h2>
 
 {
-    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image, article, source}) => (
+    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image, article, source, github}) => (
         <article>
             <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
@@ -73,7 +73,7 @@ function getProjectsTitle(lang: string) {
             <a href={'/new-portfolio/my-league'}>
                 <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">{article}</button>
             </a>
-            <a href={'/new-portfolio/my-league'}>
+            <a href={github} target="_blank">
                 <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">{source}</button>
                 </a>
         </article>

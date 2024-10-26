@@ -5,15 +5,27 @@ author: "Matthew Phillips"
 date: "09 Aug 2022"
 ---
 
-# Procés de desenvolupament de my-league
+# Procés de desenvolupament de myLeague
+
+## Taula de continguts
+
+1. [Disseny i desenvolupament de la base de dades](#bbdd)
+   1. [Primers taules de la base de dades](#primers-passos)
+   2. [Lògica d’actualització de les dades](#logica-actualitzacio)
+   3. [Afegir les taules “players i “leagues”](#afegir-taules)
+   4. [Reptes i possibles millores futures](#futures-millores)
+2. [Desenvolupament del front-end](#front-end)
+   1. [Objectius](#primers-passos)
+   2. [Elecció de framework i llibreries](#eleccio-llibreries)
+   3. [Estructura del projecte](#logica-actualitzacio)
 
 ## My-league és una plataforma que permet per una banda la creació administració de lligues de futbol i per l’altra visualització i seguiment dels resultats i estadístiques de les lligues.
 
 L’objectiu principal d’aquest projecte ha sigut i és l’aprenentatge. Vaig començar-lo l’octubre del 2022 i l’he anat fent en el temps lliure. Per això ha anat evolucionant a ratxes: segons el temps i la motivació que tenia en cada moment. Tot i això, estic molt content de la constància que he tingut, i orgullós del resultat obtingut fins ara. No el considero un projecte acabat, sé que hi ha moltes coses que es poden millorar, però igualment n’estic content.
 
-## Disseny i desenvolupament de la base de dades
+## Disseny i desenvolupament de la base de dades<a id='bbdd'></a>
 
-### Primers passos
+## Primers taules de la base de dades <a id='primers-passos'></a>
 
 Vaig triar supabase perquè facilita molt el disseny i creació d’una base de dades. No has d’instal·lar res i a més a més t’ofereix una api REST per llegir i escriure des del client. Fa servir la bbdd postgreSQL, que ho tenia molt fresc perquè feia poc havia fet de profe de bbdd. I ofereix un plugin per consumir la API des de javascript. Així que ho vaig trobar molt adient pel meu projecte.
 
@@ -24,7 +36,7 @@ Vaig començar doncs amb la creació de les primeres taules“teams” i “matc
 
 Després vaig adonar-me que havia de definir una lògica que s’encarregués d’actualitzar la informació: quan s’actualitza un partit, s’ha d’actualitzar la informació dels equips que hi han participat. Vaig considerar dues opcions: tenir aquesta lògica en el frontend, o tenir-la en la bbdd. Vaig optar per la segona perquè vaig considerar que era més fàcil evitar errors de sincronització. Feia relativament poc que havia deixat de ser profe de bases de dades i tenia bastant fresca la programació en postgresql. Impartint l’assignatura em va quedar molt clar que si una cosa bona té SQL és la coherència de dades. I just ara fent memòria, recordo una parauleta màgica que els vaig fer aprendre als meus alumnes: “ACID”: atomicitat, coherència, aïllament i durabilitat.
 
-### Lògica d’actualització de les dades
+## Lògica d’actualització de les dades <a id='logica-actualitzacio'></a>
 
 Doncs bé, vaig començar a desenvolupar la lògica que s’encarregaria d’actualizar la informació cada cop que s’actualitzava un partit. Vaig tenir clar que havia de ser una funció postgre que es cridaria en qualsevol actualització de la taula matches.
 
@@ -75,7 +87,7 @@ Explicació de la lògica:
 2. Després recorrem tots els partits que s'han jugat (on played \= true) i cridem la funció update_teams_row(match_row) que s’encarregarà d’actualitzar les estadístiques dels equips que van participar en cadascun d'aquests partits.
 3. Finalment, recorrem tots els equips per sumar els gols a favor i en contra, a casa i a fora, i actualitzem aquestes dades.
 
-### Afegir les taules “players i “leagues”
+## Afegir les taules “players i “leagues” <a id='afegir-taules'></a>
 
 Després vaig afegir la taula “players”, per afegir les dades dels jugadors dels equips i així poder oferir estadístiques.
 
@@ -91,7 +103,7 @@ En total vaig escriure 10 funcions i 6 triggers.
 
 Si t’interessa, pots consultar la base de dades completa en aquest \[enllaç\](https://github.com/eloicasamayor/my-league).
 
-## Reptes i possibles millores futures
+## Reptes i possibles millores futures <a id='futures-millores'></a>
 
 En la taula de teams hi guardo els gols a favor i en contra acumulats, i també desglossats amb “a casa” i “a fora”, també les victòries, derrotes i empats, el total de partits jugats i els punts acumulats (comptant 3 per victòria i 1 per empat).  
 Això em va facilitar la feina a l’hora d’anar fent la lògica, però va arribar un punt en que em vaig adonar que guardar així la informació implica que no puc guardar la informació en curs d’un equip per a diferents lligues. Però bé, de moment no he afrontat aquest inconvenient.
@@ -105,3 +117,82 @@ Una altra cosa que he pensat que podria afegir és la possibilitat de crear llig
 I encara una possible millora és poder guardar i generar estadístiques sobre els gols encaixats als porters. Això podria implicar afegir la dada de quina posició ocupa cada jugador i potser també dels minuts jugats.
 
 Ara per ara, però, les millores més immediates seran de la part de front end; la base de dades haurà d’esperar per rebre actualitzacions.
+
+## Desenvolupament del front-end<a id='front-end'></a>
+
+### Objectius <a id='objectius'></a>
+
+1. <b>Interactivitat i usabilitat</b>
+   Vull crear una aplicació molt interactiva i fàcil d'usar, amb una navegació senzilla entre les pàgines i apartats. La introducció de dades serà directa, evitant informació innecessària per assegurar una experiència intuitiva.
+
+2. <b>Aplicació adaptativa</b>
+   L'objectiu és desenvolupar una aplicació que s'adapti perfectament a qualsevol pantalla. L'elecció de Tailwind CSS serà clau per aconseguir-ho, permetent una disseny responsiu i flexible.
+
+3. <b>Rapidesa</b>
+   L'aplicació ha de ser ràpida tant en l'obtenció com en l'emmagatzematge de dades, garantint una experiència fluida. També, vull informar l'usuari durant els processos de càrrega o enviament d'informació.
+
+4. <b>Accessibilitat</b>
+   L'aplicació serà dissenyada per ser accessible, permetent el seu ús amb el teclat, amb el mínim suport del ratolí. Inclourà opcions de canviar entre mode clar i fosc.
+
+5. <b>Estètica moderna i disseny coherent</b>
+   La interfície visual serà atractiva i coherent, amb un disseny adaptat al públic objectiu, que consisteix principalment en homes joves.
+
+6. <b>Escalabilitat</b>
+   Desenvoluparé una arquitectura que permeti l'addició de noves funcionalitats de manera senzilla a mesura que el projecte creixi, assegurant així la seva sostenibilitat i adaptabilitat a futurs requisits.
+
+### Elecció de framework i llibreries <a id='eleccio-llibreries'></a>
+
+Vaig fer algunes probes abans de decidir el conjunt d'eines que faria servir per al desenvolupament. React era la única peça que tenia 100% clar que faria servir. Més que res perquè és el framework de javascript que més he utilitzat i amb el que em sento còmode.
+Vaig probar Nextjs i el vaig descartar simplement perquè tenia pressa per començar i no volia perdre gaire temps en aprendre un nou framework i les seves funcionalitats. Vaig decidir-me per Vite perquè ja hi he treballat i m'agrada per la seva simplicitat. No aporta tantes coses com Nextjs, però és ràpid i et permet començar un projecte de react sense pensar gaire.
+Per a la gestió de l'estat (la informació que es comparteix entre els componentes i pàgines), ja coneixia redux i tenia ganes d'aprendre a usar Redux Toolkit, doncs em vaig decidir a usar-lo.
+Per a les crides a la api vaig fer servir el plugin de javascript oficial que proveeix supabase. Integrar redux toolkit amb el plugin de supabase em va donar bastants maldecaps... però finalment ho vaig aconseguir. A mesura que he anat treballant amb el projecte he anat veient que el fet de treballar amb redux m'ho ha complicat bastant tot... i potser tot hauria sigut més senzill si simplement hagués gestionat els estats sense cap llibreria. Però bé, no m'en penedeixo pas; m'ha servit per aprendre i si després vull fer créixer el projecte amb redux em serà senzill.
+En quant als estils, he fet servir Tailwind perquè també em permet anar ràpid i mantenir fàcilment la coherència entre components. També he fet servir força components predissenyats de Flowbite, una llibreria de components que usa Tailwind.
+
+### Estructura del projecte <a id='estructura-projecte'></a>
+
+```
+./components:
+Alert.jsx           Footer.jsx          icons/               LeagueDayMatchings.jsx  MatchesList.jsx       PageLayout.jsx      StepsNavigation.jsx
+Classification.jsx  forms/              index.jsx            LeaguesList.jsx         Modal.jsx             PlayersList.jsx     TeamsList.jsx
+Header.jsx          LeagueDayDate.jsx   MatchesCalendar.jsx  NewLeagueInfo.jsx       SortableHeadCell.jsx  WeekDaySelect.jsx
+
+./components/forms:
+EditLeagueForm.jsx  EditPhotoForm.jsx   EditTeamForm.jsx  NewMatchForm.jsx   NewTeamForm.jsx
+EditMatchForm.jsx   EditPlayerForm.jsx  index.jsx         NewPlayerForm.jsx
+
+./components/icons:
+ArrowBackIcon.jsx   ArrowUpDown.jsx      ExclamationCircleIcon.jsx  Logo.jsx        PlusIcon.jsx      UpdateIcon.jsx
+ArrowDownDoble.jsx  CircleCheckIcon.jsx  GithubIcon.jsx             MoreIcon.jsx    SettingsIcon.jsx  UploadIcon.jsx
+ArrowLeft.jsx       DragDropIcon.jsx     HomeIcon.jsx               PencilIcon.jsx  TeamIcon.jsx      UserIcon.jsx
+ArrowRight.jsx      EmailIcon.jsx        index.jsx                  PhotoIcon.jsx   TrashIcon.jsx
+
+./helpers:
+addDatesToMatchings.js  getMatchings.js  nameToUrlName.js  setMessage.jsx  truncateString.js       validateNewLeague.js
+getFirstMatchDay.js     index.js         saveNewLeague.js  shuffle.js      useWindowDimensions.js
+
+./pages:
+index.js  LeaguePage.jsx  LeaguesPage.jsx  LoginPage.jsx  NewLeaguePage.jsx  TeamPage.jsx  UpdatePassword.jsx
+
+./redux:
+api/  auth/  constants.js  index.js  store.js
+
+./redux/api:
+apiSlice.js  index.js  leagues.js  matches.js  players.js  teams.js
+
+./redux/auth:
+slice.js
+```
+
+<style>
+    h1 {
+        text-wrap: "no-wrap";
+    }
+    h2 {
+        margin-top: 3rem;
+        font-size: 1.4rem;
+    }
+    h3 {
+        margin-top: 3rem;
+        font-size: 1.2rem;
+    }
+    </style>
