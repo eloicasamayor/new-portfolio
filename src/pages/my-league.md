@@ -7,10 +7,19 @@ date: "09 Aug 2022"
 
 # Procés de desenvolupament de myLeague
 
+## Introducció
+
+- <b>Què és "myLeague"?</b>
+  <br>My-league és una plataforma que permet la creació administració de lligues de futbol així com la visualització i seguiment dels resultats i estadístiques.
+- <b>Objectiu principal</b>
+  <br>L’objectiu principal d’aquest projecte ha sigut l’<b>aprenentatge</b>. Vaig començar-lo l’octubre del 2022 i l’he anat fent en el temps lliure, de fet encara continuo desenvolupant-lo.
+- <b>Valoració</b>
+  <br>Estic molt content de la constància que he tingut per ser quelcom que he fet en el temps lliure, i orgullós del resultat obtingut fins ara. No el considero un projecte acabat, sé que hi ha moltes coses que es poden millorar.
+
 ## Taula de continguts
 
 <details open>
-<summary><a href='#bbdd'>Disseny i desenvolupament de la base de dades</a></summary>
+<summary>Disseny i desenvolupament de la base de dades</summary>
 
 1.  [Primers taules de la base de dades](#primers-passos)
 1.  [Lògica d’actualització de les dades](#logica-actualitzacio)
@@ -18,40 +27,34 @@ date: "09 Aug 2022"
 1.  [Reptes i possibles millores futures](#futures-millores)
 </details>
 <details open>
-<summary><a href='#front-end'>Desenvolupament del front-end</summary>
+<summary>Desenvolupament del front-end</summary>
 
 1.  [Objectius](#primers-passos)
 1.  [Elecció de framework i llibreries](#eleccio-llibreries)
 1.  [Estructura del projecte](#logica-actualitzacio)
 </details>
 
-## My-league és una plataforma que permet per una banda la creació administració de lligues de futbol i per l’altra visualització i seguiment dels resultats i estadístiques de les lligues.
-
-L’objectiu principal d’aquest projecte ha sigut i és l’aprenentatge. Vaig començar-lo l’octubre del 2022 i l’he anat fent en el temps lliure. Per això ha anat evolucionant a ratxes: segons el temps i la motivació que tenia en cada moment. Tot i això, estic molt content de la constància que he tingut, i orgullós del resultat obtingut fins ara. No el considero un projecte acabat, sé que hi ha moltes coses que es poden millorar, però igualment n’estic content.
-
 ## Disseny i desenvolupament de la base de dades<a id='bbdd'></a>
 
-## Primers taules de la base de dades <a id='primers-passos'></a>
+### Primeres taules de la base de dades <a id='primers-passos'></a>
 
-Vaig triar supabase perquè facilita molt el disseny i creació d’una base de dades. No has d’instal·lar res i a més a més t’ofereix una api REST per llegir i escriure des del client. Fa servir la bbdd postgreSQL, que ho tenia molt fresc perquè feia poc havia fet de profe de bbdd. I ofereix un plugin per consumir la API des de javascript. Així que ho vaig trobar molt adient pel meu projecte.
+Vaig triar supabase perquè facilita molt el disseny i creació d’una base de dades. És un servei que té una capa gratuïta i que ofereix una interfície per crear i administrar una base de dades postgreSQL allotjada en un servidor, i una api REST preparada. També ofereix un plugin per consumir la API des de javascript.
 
-Vaig començar doncs amb la creació de les primeres taules“teams” i “matches”, la mínima expressió del projecte:
+Vaig començar doncs amb la creació de les primeres taules “teams” i “matches”, la mínima expressió del projecte:
 
 - teams: id, nom, points
 - matches: id, date, local_team, visitor_team, result
 
-Després vaig adonar-me que havia de definir una lògica que s’encarregués d’actualitzar la informació: quan s’actualitza un partit, s’ha d’actualitzar la informació dels equips que hi han participat. Vaig considerar dues opcions: tenir aquesta lògica en el frontend, o tenir-la en la bbdd. Vaig optar per la segona perquè vaig considerar que era més fàcil evitar errors de sincronització. Feia relativament poc que havia deixat de ser profe de bases de dades i tenia bastant fresca la programació en postgresql. Impartint l’assignatura em va quedar molt clar que si una cosa bona té SQL és la coherència de dades. I just ara fent memòria, recordo una parauleta màgica que els vaig fer aprendre als meus alumnes: “ACID”: atomicitat, coherència, aïllament i durabilitat.
+Després vaig adonar-me que havia de definir una lògica que s’encarregués d’actualitzar la informació: quan s’actualitza un partit, s’ha d’actualitzar la informació dels equips que hi han participat. Vaig optar per tenir aquesta lògica directament en la base de dades perquè vaig considerar que era més fàcil evitar errors de sincronització. Tinc clar que si una cosa bona té SQL és la coherència de dades. En realitat son 4 les característiques “ACID”: atomicitat, coherència, aïllament i durabilitat.
 
-## Lògica d’actualització de les dades <a id='logica-actualitzacio'></a>
+### Lògica d’actualització de les dades <a id='logica-actualitzacio'></a>
 
-Doncs bé, vaig començar a desenvolupar la lògica que s’encarregaria d’actualizar la informació cada cop que s’actualitzava un partit. Vaig tenir clar que havia de ser una funció postgre que es cridaria en qualsevol actualització de la taula matches.
-
-A mesura que feia la lògica d'actualització de les dades, vaig anar afegint més complexitat per afegir informació que trobava que era important:
+Vaig començar a desenvolupar la lògica que s’encarregaria d’actualizar la informació cada cop que s’actualitzava un partit. A mesura que feia la lògica d'actualització de les dades vaig anar afegint més informació que trobava que era important:
 
 - A “matches” hi vaig afegir local_goals, visitor_goals, match_day.
 - A “teams” hi vaig afegir urlname, goals_scored, goals_conceded, goals_scored_home, goals_scored
 
-He volgut mostrar la funció update_teams_row com a exemple. Aquesta funció permet assegurar que les estadístiques dels equips es mantinguin correctament actualitzades després de cada partit.
+Aquí tens la funció update_teams_row com a exemple. Aquesta funció permet assegurar que les estadístiques dels equips es mantinguin correctament actualitzades després de cada partit.
 
 ```sql
 DECLARE
@@ -93,7 +96,7 @@ Explicació de la lògica:
 2. Després recorrem tots els partits que s'han jugat (on played \= true) i cridem la funció update_teams_row(match_row) que s’encarregarà d’actualitzar les estadístiques dels equips que van participar en cadascun d'aquests partits.
 3. Finalment, recorrem tots els equips per sumar els gols a favor i en contra, a casa i a fora, i actualitzem aquestes dades.
 
-## Afegir les taules “players i “leagues” <a id='afegir-taules'></a>
+### Afegir les taules “players i “leagues” <a id='afegir-taules'></a>
 
 Després vaig afegir la taula “players”, per afegir les dades dels jugadors dels equips i així poder oferir estadístiques.
 
@@ -109,7 +112,7 @@ En total vaig escriure 10 funcions i 6 triggers.
 
 Si t’interessa, pots consultar la base de dades completa en aquest \[enllaç\](https://github.com/eloicasamayor/my-league).
 
-## Reptes i possibles millores futures <a id='futures-millores'></a>
+### Reptes i possibles millores futures <a id='futures-millores'></a>
 
 - <b>Poder tenir un equip en diferents lligues</b>
   En la taula de teams hi guardo els gols a favor i en contra acumulats, i també desglossats amb “a casa” i “a fora”, també les victòries, derrotes i empats, el total de partits jugats i els punts acumulats (comptant 3 per victòria i 1 per empat).  
@@ -189,9 +192,6 @@ slice.js
 ```
 
 <style>
-    h1 {
-        text-wrap: "no-wrap";
-    }
     h2 {
         margin-top: 3rem;
         font-size: 1.4rem;
@@ -202,5 +202,8 @@ slice.js
     }
     details ol {
       padding-left: 2rem;
+    }
+    details ol li a {
+      text-decoration: underline;
     }
     </style>
