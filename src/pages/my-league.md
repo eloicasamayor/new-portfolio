@@ -9,15 +9,21 @@ date: "09 Aug 2022"
 
 ## Taula de continguts
 
-1. [Disseny i desenvolupament de la base de dades](#bbdd)
-   1. [Primers taules de la base de dades](#primers-passos)
-   2. [Lògica d’actualització de les dades](#logica-actualitzacio)
-   3. [Afegir les taules “players i “leagues”](#afegir-taules)
-   4. [Reptes i possibles millores futures](#futures-millores)
-2. [Desenvolupament del front-end](#front-end)
-   1. [Objectius](#primers-passos)
-   2. [Elecció de framework i llibreries](#eleccio-llibreries)
-   3. [Estructura del projecte](#logica-actualitzacio)
+<details open>
+<summary><a href='#bbdd'>Disseny i desenvolupament de la base de dades</a></summary>
+
+1.  [Primers taules de la base de dades](#primers-passos)
+1.  [Lògica d’actualització de les dades](#logica-actualitzacio)
+1.  [Afegir les taules “players i “leagues”](#afegir-taules)
+1.  [Reptes i possibles millores futures](#futures-millores)
+</details>
+<details open>
+<summary><a href='#front-end'>Desenvolupament del front-end</summary>
+
+1.  [Objectius](#primers-passos)
+1.  [Elecció de framework i llibreries](#eleccio-llibreries)
+1.  [Estructura del projecte](#logica-actualitzacio)
+</details>
 
 ## My-league és una plataforma que permet per una banda la creació administració de lligues de futbol i per l’altra visualització i seguiment dels resultats i estadístiques de les lligues.
 
@@ -194,5 +200,8 @@ slice.js
     h3 {
         margin-top: 3rem;
         font-size: 1.2rem;
+    }
+    details ol {
+      padding-left: 2rem;
     }
     </style>
