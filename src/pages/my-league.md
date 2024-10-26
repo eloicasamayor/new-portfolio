@@ -111,18 +111,21 @@ Si t’interessa, pots consultar la base de dades completa en aquest \[enllaç\]
 
 ## Reptes i possibles millores futures <a id='futures-millores'></a>
 
-En la taula de teams hi guardo els gols a favor i en contra acumulats, i també desglossats amb “a casa” i “a fora”, també les victòries, derrotes i empats, el total de partits jugats i els punts acumulats (comptant 3 per victòria i 1 per empat).  
-Això em va facilitar la feina a l’hora d’anar fent la lògica, però va arribar un punt en que em vaig adonar que guardar així la informació implica que no puc guardar la informació en curs d’un equip per a diferents lligues. Però bé, de moment no he afrontat aquest inconvenient.
+- <b>Poder tenir un equip en diferents lligues</b>
+  En la taula de teams hi guardo els gols a favor i en contra acumulats, i també desglossats amb “a casa” i “a fora”, també les victòries, derrotes i empats, el total de partits jugats i els punts acumulats (comptant 3 per victòria i 1 per empat).  
+  Això em va facilitar la feina a l’hora d’anar fent la lògica, però va arribar un punt en que em vaig adonar que guardar així la informació implica que no puc guardar la informació en curs d’un equip per a diferents lligues. Però bé, de moment no he afrontat aquest inconvenient.
 
-Tal com he enfocat el disseny de les taules, ara mateix no és possible contemplar diferents tipus de tornejos. M’agradaria en un futur poder afegir la possibilitat de crear tornejos d’eliminatòries, o encara millor, de tornejos mixtos: amb fases de lligueta i eliminatòries.Ho vaig començar a probar creant una taula anomenada “phases”, però ho vaig deixar estar perquè no ho veia clar i implicava molts canvis.
+- <b>Tornejos amb eliminatòries</b>
+  Tal com he enfocat el disseny de les taules, ara mateix no és possible contemplar diferents tipus de tornejos. M’agradaria en un futur poder afegir la possibilitat de crear tornejos d’eliminatòries, o encara millor, de tornejos mixtos: amb fases de lligueta i eliminatòries.Ho vaig començar a probar creant una taula anomenada “phases”, però ho vaig deixar estar perquè no ho veia clar i implicava molts canvis.
 
-Una altra cosa que m’agradaria implementar és la possibilitat de crear lligues sense gestionar jugadors. Ara mateix no és possible, perquè obligatòriament necessito que cada gol estigui associat a un jugador. Podria fer alguna solució des del front-end, però m’agradaria fer-ho possible a nivell de base de dades.
+- <b>Lligues sense gestió de jugadors</b>
+  Una altra cosa que m’agradaria implementar és la possibilitat de crear lligues sense gestionar jugadors. Ara mateix no és possible, perquè obligatòriament necessito que cada gol estigui associat a un jugador. Podria fer alguna solució des del front-end, però m’agradaria fer-ho possible a nivell de base de dades.
 
-Una altra cosa que he pensat que podria afegir és la possibilitat de crear lligues privades. Això seria molt fàcil: simplement afegir una columna boleana, per exemple isPublic.
+- <b>Lligues privades</b>
+  Una altra cosa que he pensat que podria afegir és la possibilitat de crear lligues privades. Això seria molt fàcil: simplement afegir una columna boleana, per exemple isPublic.
 
-I encara una possible millora és poder guardar i generar estadístiques sobre els gols encaixats als porters. Això podria implicar afegir la dada de quina posició ocupa cada jugador i potser també dels minuts jugats.
-
-Ara per ara, però, les millores més immediates seran de la part de front end; la base de dades haurà d’esperar per rebre actualitzacions.
+- <b>Estadístiques sobre gols encaixats i minuts jugats</b>
+  I encara una possible millora és poder guardar i generar estadístiques sobre els gols encaixats als porters. Això podria implicar afegir la dada de quina posició ocupa cada jugador i potser també dels minuts jugats.
 
 ## Desenvolupament del front-end<a id='front-end'></a>
 
@@ -130,29 +133,25 @@ Ara per ara, però, les millores més immediates seran de la part de front end; 
 
 1. <b>Interactivitat i usabilitat</b>
    Vull crear una aplicació molt interactiva i fàcil d'usar, amb una navegació senzilla entre les pàgines i apartats. La introducció de dades serà directa, evitant informació innecessària per assegurar una experiència intuitiva.
-
 2. <b>Aplicació adaptativa</b>
    L'objectiu és desenvolupar una aplicació que s'adapti perfectament a qualsevol pantalla. L'elecció de Tailwind CSS serà clau per aconseguir-ho, permetent una disseny responsiu i flexible.
-
 3. <b>Rapidesa</b>
    L'aplicació ha de ser ràpida tant en l'obtenció com en l'emmagatzematge de dades, garantint una experiència fluida. També, vull informar l'usuari durant els processos de càrrega o enviament d'informació.
-
 4. <b>Accessibilitat</b>
    L'aplicació serà dissenyada per ser accessible, permetent el seu ús amb el teclat, amb el mínim suport del ratolí. Inclourà opcions de canviar entre mode clar i fosc.
-
 5. <b>Estètica moderna i disseny coherent</b>
    La interfície visual serà atractiva i coherent, amb un disseny adaptat al públic objectiu, que consisteix principalment en homes joves.
-
 6. <b>Escalabilitat</b>
    Desenvoluparé una arquitectura que permeti l'addició de noves funcionalitats de manera senzilla a mesura que el projecte creixi, assegurant així la seva sostenibilitat i adaptabilitat a futurs requisits.
 
 ### Elecció de framework i llibreries <a id='eleccio-llibreries'></a>
 
-Vaig fer algunes probes abans de decidir el conjunt d'eines que faria servir per al desenvolupament. React era la única peça que tenia 100% clar que faria servir. Més que res perquè és el framework de javascript que més he utilitzat i amb el que em sento còmode.
-Vaig probar Nextjs i el vaig descartar simplement perquè tenia pressa per començar i no volia perdre gaire temps en aprendre un nou framework i les seves funcionalitats. Vaig decidir-me per Vite perquè ja hi he treballat i m'agrada per la seva simplicitat. No aporta tantes coses com Nextjs, però és ràpid i et permet començar un projecte de react sense pensar gaire.
-Per a la gestió de l'estat (la informació que es comparteix entre els componentes i pàgines), ja coneixia redux i tenia ganes d'aprendre a usar Redux Toolkit, doncs em vaig decidir a usar-lo.
-Per a les crides a la api vaig fer servir el plugin de javascript oficial que proveeix supabase. Integrar redux toolkit amb el plugin de supabase em va donar bastants maldecaps... però finalment ho vaig aconseguir. A mesura que he anat treballant amb el projecte he anat veient que el fet de treballar amb redux m'ho ha complicat bastant tot... i potser tot hauria sigut més senzill si simplement hagués gestionat els estats sense cap llibreria. Però bé, no m'en penedeixo pas; m'ha servit per aprendre i si després vull fer créixer el projecte amb redux em serà senzill.
-En quant als estils, he fet servir Tailwind perquè també em permet anar ràpid i mantenir fàcilment la coherència entre components. També he fet servir força components predissenyats de Flowbite, una llibreria de components que usa Tailwind.
+- <b>React</b> era la única peça que tenia 100% clar que faria servir. Més que res perquè és el framework de javascript que més he utilitzat i amb el que em sento còmode.
+- <b>Vite</b>: el vaig triar perquè ja hi he treballat i m'agrada per la seva simplicitat. No aporta tantes coses com Nextjs, però és ràpid i et permet començar un projecte de react sense pensar gaire.
+- <b>Redux</b>.Per a la gestió de l'estat, ja coneixia redux i tenia ganes d'aprendre a usar Redux Toolkit, doncs em vaig decidir a usar-lo.
+- <b>Supabse.js</b> Per a les crides a la api vaig fer servir el plugin de javascript oficial que proveeix supabase. Integrar redux toolkit amb el plugin de supabase em va donar bastants maldecaps... però finalment ho vaig aconseguir.
+- <b>Tailwind CSS</b> En quant als estils, he fet servir Tailwind perquè també em permet anar ràpid i mantenir fàcilment la coherència entre components.
+- <b>Flowbite</b> També he fet servir força components predissenyats de Flowbite, una llibreria de components que usa Tailwind.
 
 ### Estructura del projecte <a id='estructura-projecte'></a>
 
