@@ -1,81 +1,131 @@
 ---
-import Badge from '../components/Badge.astro';
+import Badge from "../components/Badge.astro";
 type ProjectsItemT = {
-    title: string;
-    description: string;
-    link: string;
-    article: string;
-    source: string;
-    github: string;
-    image: string;
-    tags: string[];
+  title: string;
+  description: string;
+  link: string;
+  article?: string;
+  source?: string;
+  github: string;
+  image: string;
+  tags: string[];
 };
 type Projects = {
-    en: ProjectsItemT[];
-    es: ProjectsItemT[];
-    ca: ProjectsItemT[];
+  en: ProjectsItemT[];
+  es: ProjectsItemT[];
+  ca: ProjectsItemT[];
 };
-type Language = 'en' | 'es' | 'ca';
+type Language = "en" | "es" | "ca";
 
 const PROJECTS: Projects = {
-    es: [
-        {
-            title: 'My League',
-            description: 'Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, Redux y Tailwind para el frontend y Supabase para el backend.',
-            link: 'my-league.netlify.app',
-            article: 'Leer artículo',
-            source: 'Ir al repositorio',
-            github: 'https://github.com/eloicasamayor/my-league/',
-            image: '/new-portfolio/projects/my-league.webp',
-            tags: ['react', 'redux', 'tailwind', 'supabase']
-        }
-    ],
-    ca: [
-        {
-            title: 'My League',
-            description: 'Plataforma d\'administració i consulta de dades, resultats i estadístiques de tornejos de futbol. Desenvolupat amb React, Redux i Tailwind per al frontend i Supabase per al backend.',
-            link: 'my-league.netlify.app',
-            article: 'Llegir article',
-            source: 'Anar al repositori',
-            github: 'https://github.com/eloicasamayor/my-league/',
-            image: '/new-portfolio/projects/my-league.webp',
-            tags: ['react', 'redux', 'tailwind', 'supabase']
-        }
-    ],
-    en: [
-        {
-            title: 'My League',
-            description: 'Management and data querying platform for football tournament results and statistics. Developed with React, Redux, and Tailwind for the frontend and Supabase for the backend.',
-            link: 'my-league.netlify.app',
-            article: 'Read article',
-            source: 'Go to repository',
-            github: 'https://github.com/eloicasamayor/my-league/',
-            image: '/new-portfolio/projects/my-league.webp',
-            tags: ['react', 'redux', 'tailwind', 'supabase']
-        }
-    ]
-}
+  es: [
+    {
+      title: "My League",
+      description:
+        "Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, Redux y Tailwind para el frontend y Supabase para el backend.",
+      link: "my-league.netlify.app",
+      article: "Leer artículo",
+      source: "Ir al repositorio",
+      github: "https://github.com/eloicasamayor/my-league/",
+      image: "/new-portfolio/projects/my-league.webp",
+      tags: ["react", "redux", "tailwind", "supabase"],
+    },
+    {
+      title: "Countries",
+      description:
+        "Aplicación para consultar datos sobre todos los países del mundo. Desarrollada con React, usando Vite y ShadCN para algunos componentes de la UI.",
+      link: "https://eloicasamayor.github.io/countries/",
+      source: "Ir al repositorio",
+      github: "https://github.com/eloicasamayor/countries/",
+      image: "/new-portfolio/projects/countries.jpg",
+      tags: ["react", "vite", "shadcn"],
+    },
+  ],
+  ca: [
+    {
+      title: "My League",
+      description:
+        "Plataforma d'administració i consulta de dades, resultats i estadístiques de tornejos de futbol. Desenvolupat amb React, Redux i Tailwind per al frontend i Supabase per al backend.",
+      link: "my-league.netlify.app",
+      article: "Llegir article",
+      source: "Anar al repositori",
+      github: "https://github.com/eloicasamayor/my-league/",
+      image: "/new-portfolio/projects/my-league.webp",
+      tags: ["react", "redux", "tailwind", "supabase"],
+    },
+    {
+      title: "Countries",
+      description:
+        "Aplicació de consulta de dades sobre tots els països del món. Desenvolupada amb React, usant Vite i ShadCN per a alguns components de la UI.",
+      link: "https://eloicasamayor.github.io/countries/",
+      source: "Anar al repositori",
+      github: "https://github.com/eloicasamayor/countries/",
+      image: "/new-portfolio/projects/countries.jpg",
+      tags: ["react", "vite", "shadcn"],
+    },
+  ],
+  en: [
+    {
+      title: "My League",
+      description:
+        "Management and data querying platform for football tournament results and statistics. Developed with React, Redux, and Tailwind for the frontend and Supabase for the backend.",
+      link: "my-league.netlify.app",
+      article: "Read article",
+      source: "Go to repository",
+      github: "https://github.com/eloicasamayor/my-league/",
+      image: "/new-portfolio/projects/my-league.webp",
+      tags: ["react", "redux", "tailwind", "supabase"],
+    },
+    {
+      title: "Countries",
+      description:
+        "Application to browse data about all the countries in the world. Built with React, using Vite and ShadCN for some UI components.",
+      link: "https://eloicasamayor.github.io/countries/",
+      source: "Go to repository",
+      github: "https://github.com/eloicasamayor/countries/",
+      image: "/new-portfolio/projects/countries.jpg",
+      tags: ["react", "vite", "shadcn"],
+    },
+  ],
+};
 function getProjectsTitle(lang: string) {
-    if (lang ==='en') return 'Projects'
-    if (lang ==='es') return 'Proyectos'
-    return 'Projectes'
+  if (lang === "en") return "Projects";
+  if (lang === "es") return "Proyectos";
+  return "Projectes";
 }
 ---
+
 <h2 class="text-3xl font-bold">{getProjectsTitle(Astro.props.lang)}</h2>
 
 {
-    PROJECTS[Astro.props.lang as Language].map(({title, description, tags, image, article, source, github}) => (
-        <article>
-            <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
-            <p class="text-lg mb-4 text-pretty">{description}</p>
-            {tags.map( tag => <Badge>{tag}</Badge>)}
-            <img class="pb-4 pt-2" src={image} alt={'captura de pantalla del proyecto ' + title} />
-            <a href={'/new-portfolio/my-league'}>
-                <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">{article}</button>
-            </a>
-            <a href={github} target="_blank">
-                <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">{source}</button>
-                </a>
-        </article>
-    ))
+  PROJECTS[Astro.props.lang as Language].map(
+    ({ title, description, tags, image, article, source, github }) => (
+      <article class="mb-10">
+        <h3 class="text-2xl font-semibold text-rose-700 mb-3">{title}</h3>
+        <p class="text-lg mb-4 text-pretty">{description}</p>
+        {tags.map((tag) => (
+          <Badge>{tag}</Badge>
+        ))}
+        <img
+          class="pb-4 pt-2"
+          src={image}
+          alt={"captura de pantalla del proyecto " + title}
+        />
+        {article && (
+          <a href={"/new-portfolio/my-league"}>
+            <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">
+              {article}
+            </button>
+          </a>
+        )}
+        {source && (
+          <a href={github} target="_blank">
+            <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">
+              {source}
+            </button>
+          </a>
+        )}
+      </article>
+    )
+  )
 }
