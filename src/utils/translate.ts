@@ -17,7 +17,7 @@ export function getProjects(lang: string) {
 }
 
 export function getFooterText(lang: string) {
-  if (lang === "es") return "© 2024 Ningún derecho reservado";
-  if (lang === "en") return "© 2024 No right reserved";
-  return "© 2024 Cap dret reservat";
+  if (lang === "es") return "Basado en portfolio.dev de @midudev ❤️";
+  if (lang === "en") return "Based on portfolio.dev by @midudev ❤️";
+  return "Basat en portfolio.dev de @midudev ❤️";
 }

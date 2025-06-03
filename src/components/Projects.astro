@@ -1,5 +1,8 @@
 ---
 import Badge from "../components/Badge.astro";
+import Article from "../icons/Article.astro";
+import Github from "../icons/Github.astro";
+import Link from "../icons/Link.astro";
 type ProjectsItemT = {
   title: string;
   description: string;
@@ -26,10 +29,10 @@ const PROJECTS: Projects = {
         "Plataforma de administración y consulta de datos, resultados y estadísticas de torneos de futbol. Desarrollado con React, Redux y Tailwind para el frontend y Supabase para el backend.",
       link: "https://my-league.netlify.app",
       article: "Leer artículo",
-      source: "Ir al repositorio",
+      source: "Repositorio",
       linkText: "Ir a la aplicación",
       github: "https://github.com/eloicasamayor/my-league/",
-      image: "/new-portfolio/projects/my-league.webp",
+      image: "/new-portfolio/projects/my-league.jpg",
       tags: ["react", "redux", "tailwind", "supabase"],
     },
     {
@@ -37,7 +40,7 @@ const PROJECTS: Projects = {
       description:
         "Aplicación para consultar datos sobre todos los países del mundo. Desarrollada con React, usando Vite y ShadCN para algunos componentes de la UI.",
       link: "https://eloicasamayor.github.io/countries/",
-      source: "Ir al repositorio",
+      source: "Repositorio",
       linkText: "Ir a la aplicación",
       github: "https://github.com/eloicasamayor/countries/",
       image: "/new-portfolio/projects/countries.jpg",
@@ -51,10 +54,10 @@ const PROJECTS: Projects = {
         "Plataforma d'administració i consulta de dades, resultats i estadístiques de tornejos de futbol. Desenvolupat amb React, Redux i Tailwind per al frontend i Supabase per al backend.",
       link: "https://my-league.netlify.app",
       article: "Llegir article",
-      source: "Anar al repositori",
+      source: "Repositori",
       linkText: "Anar a l'aplicació",
       github: "https://github.com/eloicasamayor/my-league/",
-      image: "/new-portfolio/projects/my-league.webp",
+      image: "/new-portfolio/projects/my-league.jpg",
       tags: ["react", "redux", "tailwind", "supabase"],
     },
     {
@@ -62,7 +65,7 @@ const PROJECTS: Projects = {
       description:
         "Aplicació de consulta de dades sobre tots els països del món. Desenvolupada amb React, usant Vite i ShadCN per a alguns components de la UI.",
       link: "https://eloicasamayor.github.io/countries/",
-      source: "Anar al repositori",
+      source: "Repositori",
       linkText: "Anar a l'aplicació",
       github: "https://github.com/eloicasamayor/countries/",
       image: "/new-portfolio/projects/countries.jpg",
@@ -76,10 +79,10 @@ const PROJECTS: Projects = {
         "Management and data querying platform for football tournament results and statistics. Developed with React, Redux, and Tailwind for the frontend and Supabase for the backend.",
       link: "https://my-league.netlify.app",
       article: "Read article",
-      source: "Go to repository",
+      source: "Repository",
       linkText: "Go to the application",
       github: "https://github.com/eloicasamayor/my-league/",
-      image: "/new-portfolio/projects/my-league.webp",
+      image: "/new-portfolio/projects/my-league.jpg",
       tags: ["react", "redux", "tailwind", "supabase"],
     },
     {
@@ -87,7 +90,7 @@ const PROJECTS: Projects = {
       description:
         "Application to browse data about all the countries in the world. Built with React, using Vite and ShadCN for some UI components.",
       link: "https://eloicasamayor.github.io/countries/",
-      source: "Go to repository",
+      source: "Repository",
       linkText: "Go to the application",
       github: "https://github.com/eloicasamayor/countries/",
       image: "/new-portfolio/projects/countries.jpg",
@@ -124,29 +127,37 @@ function getProjectsTitle(lang: string) {
           <Badge>{tag}</Badge>
         ))}
         <img
-          class="pb-4 pt-2"
+          class="pb-3 pt-2"
           src={image}
           alt={"captura de pantalla del proyecto " + title}
         />
         {article && (
-          <a href={"/new-portfolio/my-league"}>
-            <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">
-              {article}
-            </button>
+          <a
+            href={"/new-portfolio/my-league"}
+            class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-1.5 px-3 rounded-full m-0.5 text-sm inline-block"
+          >
+            <Article class="w-4 h-4 inline-block mr-1 mb-1" />
+            {article}
           </a>
         )}
         {source && (
-          <a href={github} target="_blank">
-            <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">
-              {source}
-            </button>
+          <a
+            href={github}
+            target="_blank"
+            class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-1.5 px-3 rounded-full m-0.5 text-sm inline-block"
+          >
+            <p>
+              <Github class="w-4 h-4 inline-block mr-1 mb-1" /> {source}
+            </p>
           </a>
         )}
         {linkText && (
-          <a href={link} target="_blank">
-            <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-full">
-              {linkText}
-            </button>
+          <a
+            href={link}
+            target="_blank"
+            class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-1.5 px-3 rounded-full m-0.5 text-sm inline-block"
+          >
+            <Link class="w-4 h-4 inline-block mr-1 mb-1" /> {linkText}
           </a>
         )}
       </article>
