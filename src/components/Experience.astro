@@ -1,117 +1,105 @@
 ---
 import { getExperience } from "../utils/translate";
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from "./ExperienceItem.astro";
 
-type Language = 'en' | 'es' | 'ca';
+type Language = "en" | "es" | "ca";
 
 type ExperienceItemT = {
-    date: string;
-    title: string;
-    description: string;
+  date: { from: string; to?: string };
+  title: { en: string; es: string; ca: string };
+  description: { en: string; es: string; ca: string };
 };
 
-type Experience = {
-    en: ExperienceItemT[];
-    es: ExperienceItemT[];
-    ca: ExperienceItemT[];
-};
-const experience: Experience = {
-    en: [
-        {
-            date: ' june 2023  (current)',
-            title: 'Frontend web developer at VASS',
-            description: "Develops and maintains the frontend software of the ATM network of an important bank. Coordinates with UX and business teams for new funcionalities. Coordinates with UX and business teams for new funcionalities..Maintains legacy code. Responsible for maintaining critical app components crucial to the bank's operations.",
-        },
-        {
-            date: 'May 2022 to june 2023',
-            title: 'Frontend web developer at NPAW',
-            description: 'Data visualization apps development. Uses React, Redux, Echarts and other libs. Agile methodology using Jira.',
-        },
-        {
-            date: 'September 2021 to May 2022',
-            title: 'Databases teacher at Escola Pia Diputació',
-            description: 'CFGS "Multiplatform Apps Development Professional Degree". Teaches databases design principles. Instructs SQL and Pl/PgSQL programming.'
-        },
-        {
-            date: 'Sept. 2015 to June 2021',
-            title: 'Junior unity developer at Walk3D',
-            description: 'Designs and creates software solutions for engineering and marketing fields. Develops with unity and third party libraries.'
-        },
-        {
-            date: 'January to June 2014',
-            title: 'Web developer intern at LaGenciaWeb',
-            description: 'Builds websites using WordPress and Joomla'
-        }
-    ],
-    es: [
-        {
-            date: 'junio de 2023 (actual)',
-            title: 'Desarrollador web frontend en VASS',
-            description: "Desarrolla y mantiene el frontend de los cajeros automáticos de un banco importante del país. Coordina con equipos de UX y de negocio para nuevas funcionalidades. Mantiene código legado. Responsable del mantenimiento de componentes críticos de la aplicación, cruciales para las operaciones del banco.",
-        },
-        {
-            date: 'mayo de 2022 a junio de 2023',
-            title: 'Desarrollador web frontend en NPAW',
-            description: 'Desarrollo de aplicaciones de visualización de datos. Utiliza React, Redux, Echarts y otras bibliotecas. Metodología ágil usando Jira.',
-        },
-        {
-            date: 'septiembre de 2021 a mayo de 2022',
-            title: 'Profesor de bases de datos en Escola Pia Diputació',
-            description: 'CFGS "Título Profesional de Desarrollo de Aplicaciones Multiplataforma". Enseña principios de diseño de bases de datos. Instruye en programación SQL y Pl/PgSQL.'
-        },
-        {
-            date: 'septiembre de 2015 a junio de 2021',
-            title: 'Desarrollador junior en Walk3D',
-            description: 'Diseña y crea soluciones de software para los campos de ingeniería y marketing. Desarrolla con Unity y bibliotecas de terceros.'
-        },
-        {
-            date: 'enero a junio de 2014',
-            title: 'Desarrollador en prácticas en LaGenciaWeb',
-            description: 'Crea sitios web usando WordPress y Joomla.'
-        }
-    ],
-    ca: [
-        {
-            date: 'juny de 2023 (actual)',
-            title: 'Desenvolupador web frontend a VASS',
-            description: "Desenvolupament i manteniment l'aplicació frontend dels caixers automàtics d'un banc important del país. Coordina amb equips de UX i de negoci per a noves funcionalitats. Mantenimeint de codi antic. Responsable del manteniment de components crítics de l'aplicació, crucials per a les operacions del banc.",
-        },
-        {
-            date: 'maig de 2022 a juny de 2023',
-            title: 'Desenvolupador web frontend a NPAW',
-            description: 'Desenvolupament d\'aplicacions de visualització de dades. Utilitza React, Redux, Echarts i altres llibreries. Ús de la metodologia àgil amb l\'ajuda de Jira.',
-        },
-        {
-            date: 'setembre de 2021 a maig de 2022',
-            title: 'Professor de bases de dades a l\'Escola Pia Diputació',
-            description: 'CFGS "Títol Professional de Desenvolupament d\'Aplicacions Multiplataforma". Ensenya principis de disseny de bases de dades. Instructiu en programació SQL i Pl/PgSQL.'
-        },
-        {
-            date: 'setembre de 2015 a juny de 2021',
-            title: 'Desenvolupador junior a Walk3D',
-            description: 'Dissenya i crea solucions de programari per als camps d\'enginyeria i màrqueting. Desenvolupa amb Unity i biblioteques de tercers.'
-        },
-        {
-            date: 'gener a juny de 2014',
-            title: 'Desenvolupador júnior en pràctiques a LaGenciaWeb',
-            description: 'Construeix llocs web utilitzant WordPress i Joomla.'
-        }
-    ]
-    }
+const experience: ExperienceItemT[] = [
+  {
+    date: { from: "2023-06" },
+    title: {
+      en: "Frontend web developer at VASS",
+      es: "Desarrollador web frontend en VASS",
+      ca: "Desenvolupador web frontend a VASS",
+    },
+    description: {
+      en: "Develops and maintains the frontend software of the ATM network of an important bank. Coordinates with UX and business teams for new funcionalities. Maintains legacy code. Responsible for maintaining critical app components crucial to the bank's operations.",
+      es: "Desarrolla y mantiene el software frontend de la red de cajeros automáticos de un importante banco. Coordina con los equipos de UX y de negocio para nuevas funcionalidades. Mantiene el código legado. Responsable del mantenimiento de componentes críticos de la aplicación, cruciales para las operaciones del banco.",
+      ca: "Desenvolupa i manté el programari frontend de la xarxa de caixers automàtics d'un important banc. Coordina amb els equips de UX i de negoci per a noves funcionalitats. Manté el codi llegat. Responsable del manteniment de components crítics de l'aplicació, crucials per a les operacions del banc.",
+    },
+  },
+  {
+    date: { from: "2022-05", to: "2023-06" },
+    title: {
+      en: "Frontend web developer at NPAW",
+      es: "Desarrollador web frontend en NPAW",
+      ca: "Desenvolupador web frontend a NPAW",
+    },
+    description: {
+      en: "Data visualization apps development. Uses React, Redux, Echarts and other libs. Agile methodology using Jira.",
+      es: "Desarrollo de aplicaciones de visualización de datos. Utiliza React, Redux, Echarts y otras bibliotecas. Metodología ágil usando Jira.",
+      ca: "Desenvolupament d'aplicacions de visualització de dades. Utilitza React, Redux, Echarts i altres biblioteques. Metodologia àgil utilitzant Jira.",
+    },
+  },
+  {
+    date: { from: "2021-09", to: "2022-05" },
+    title: {
+      en: "Databases teacher at Escola Pia Diputació",
+      es: "Profesor de bases de datos en Escola Pia Diputació",
+      ca: "Professor de bases de dades a l'Escola Pia Diputació",
+    },
+    description: {
+      en: 'CFGS "Multiplatform Apps Development Professional Degree". Teaches databases design principles. Instructs SQL and Pl/PgSQL programming.',
+      es: 'CFGS "Título Profesional de Desarrollo de Aplicaciones Multiplataforma". Enseña principios de diseño de bases de datos. Instruye en programación SQL y Pl/PgSQL.',
+      ca: 'CFGS "Títol Professional de Desenvolupament d\'Aplicacions Multiplataforma". Ensenya principis de disseny de bases de dades. Instruïx en programació SQL i Pl/PgSQL.',
+    },
+  },
+  {
+    date: { from: "2015-09", to: "2021-06" },
+    title: {
+      en: "Junior unity developer at Walk3D",
+      es: "Desarrollador junior en Walk3D",
+      ca: "Desenvolupador junior a Walk3D",
+    },
+    description: {
+      en: "Designs and creates software solutions for engineering and marketing fields. Develops with unity and third party libraries.",
+      es: "Diseña y crea soluciones de software para los campos de ingeniería y marketing. Desarrolla con Unity y bibliotecas de terceros.",
+      ca: "Dissenya i crea solucions de programari per als camps d'enginyeria i màrqueting. Desenvolupa amb Unity i biblioteques de tercers.",
+    },
+  },
+  {
+    date: { from: "2014-01", to: "2014-06" },
+    title: {
+      en: "Web developer intern at LaGenciaWeb",
+      es: "Desarrollador web en prácticas en LaGenciaWeb",
+      ca: "Desenvolupador web en pràctiques a LaGenciaWeb",
+    },
+    description: {
+      en: "Builds websites using WordPress and Joomla",
+      es: "Crea sitios web usando WordPress y Joomla",
+      ca: "Construeix llocs web utilitzant WordPress i Joomla",
+    },
+  },
+];
 
-function getExperiencieTitle(lang: string) {
-    debugger
-    if(lang === 'es') return 'Experiencia laboral'
-    if(lang === 'en') return 'Working experience'
-    return 'Experiència laboral'
+function getExperiencieTitle(lang: Language) {
+  if (lang === "es") return "Experiencia laboral";
+  if (lang === "en") return "Working experience";
+  return "Experiència laboral";
 }
 ---
 
 <h2 class="text-3xl font-bold">{getExperiencieTitle(Astro.props.lang)}</h2>
-<ol class="relative border-s border-gray-200 dark:border-gray-700">    
-    {experience[Astro.props.lang as Language].map((item: ExperienceItemT) => {
-        console.log(item)
-        return <ExperienceItem {...item} />
-    })}              
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+  {
+    experience.map((item: ExperienceItemT) => {
+      console.log(item);
+      return (
+        <ExperienceItem
+          {...{
+            date: item.date,
+            title: item.title[Astro.props.lang as Language],
+            description: item.description[Astro.props.lang as Language],
+            lang: Astro.props.lang as Language,
+          }}
+        />
+      );
+    })
+  }
 </ol>
-

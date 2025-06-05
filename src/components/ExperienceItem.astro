@@ -1,33 +1,91 @@
 ---
-const {date, title, description, link} = Astro.props
+const { date, title, description, link } = Astro.props;
+const fromDate = new Date(date.from);
+const toDate = date.to ? new Date(date.to) : null;
+type Language = "en" | "es" | "ca";
+
+const getTo = (lang: Language) => {
+  if (lang === "es") return "a";
+  if (lang === "en") return "to";
+  return "fins al";
+};
+
+const getFrom = (lang: Language) => {
+  if (lang === "es") return "De";
+  if (lang === "en") return "From";
+  return "Del";
+};
 ---
+
 <li class="mb-10 ms-4">
-        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-gray-100 dark:border-gray-900 dark:bg-gray-700"></div>
-        <time class="mb-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{date}</time>
-        <h3 class="pt-3 text-lg font-semibold text-rose-600">{title}</h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-pretty">{description}</p>
-        { link && (
-        <a href={link} role="link" class="inline-flex items-center text-lg font-medium text-rose-500 dark:text-teal-200 dark:hover:text-rose-300 hover:text-rose-700">
-          know more{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 icon icon-tabler icon-tabler-chevron-right"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 6l6 6l-6 6" />
-            </>
-          </svg>
-        </LinkInline>
-      )}
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg></a>
-    </li>
+  <div
+    class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-gray-100 dark:border-gray-900 dark:bg-gray-700"
+  >
+  </div>
+  <p
+    class="pt-1 text-sm font-normal leading-none text-gray-50 dark:text-gray-100"
+  >
+    {getFrom(Astro.props.lang as Language)}
+    <time datetime={`${date.from}-00T00:00:00`}>
+      {
+        fromDate.toLocaleString(Astro.props.lang as Language, {
+          month: "long",
+          year: "numeric",
+        })
+      }
+    </time>
+    {
+      date.to && (
+        <>
+          {getTo(Astro.props.lang as Language)}
+          <time datetime={`${date.to}-00T00:00:00`}>
+            {toDate.toLocaleString(Astro.props.lang, {
+              month: "long",
+              year: "numeric",
+            })}
+          </time>
+        </>
+      )
+    }
+  </p>
+  <h3 class="pt-3 text-lg font-semibold text-rose-600">{title}</h3>
+  <p
+    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-pretty"
+  >
+    {description}
+  </p>
+  {
+    link && (
+      <a
+        href={link}
+        role="link"
+        class="inline-flex items-center text-lg font-medium text-rose-500 dark:text-teal-200 dark:hover:text-rose-300 hover:text-rose-700"
+      >
+        know more{" "}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 icon icon-tabler icon-tabler-chevron-right"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
+          </>
+        </svg>
+      </a>
+    )
+  }
+  <path
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+</li>
