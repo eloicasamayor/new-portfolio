@@ -1,8 +1,6 @@
 ---
-import SunIcon from "../icons/Sun.astro"
-import MoonIcon from "../icons/Moon.astro"
-
-const THEMES = ["light", "dark"]
+import SunIcon from "../icons/Sun.astro";
+import MoonIcon from "../icons/Moon.astro";
 ---
 
 <div class="relative ml-1 mr-1">
@@ -35,25 +33,28 @@ const THEMES = ["light", "dark"]
 </style>
 
 <script is:inline>
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  let currentTheme = localStorage.getItem("theme") || (matchMedia.matches ? "dark" : "light")
-  
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  let currentTheme =
+    localStorage.getItem("theme") || (matchMedia.matches ? "dark" : "light");
+
   const updateIcon = () => {
     document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
       element.style.display = element.id === currentTheme ? "block" : "none";
     });
-  }
+  };
 
   const toggleTheme = () => {
     currentTheme = currentTheme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", currentTheme);
     document.documentElement.classList.toggle("dark");
     updateIcon();
-  }
+  };
 
   // Initialize theme and icon on load
   document.documentElement.classList.toggle("dark", currentTheme === "dark");
   updateIcon();
 
-  document.getElementById("theme-toggle-btn").addEventListener("click", toggleTheme);
+  document
+    .getElementById("theme-toggle-btn")
+    .addEventListener("click", toggleTheme);
 </script>

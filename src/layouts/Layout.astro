@@ -1,65 +1,60 @@
 ---
-import '@fontsource-variable/onest';
+import "@fontsource-variable/onest";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/new-portfolio/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="bg-zinc-100 dark:bg-zinc-900 text-black dark:text-white">
-		<slot />
-	</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/new-portfolio/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-zinc-100 dark:bg-zinc-900 text-black dark:text-white">
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		color-scheme: light dark;
-	}
+  :root {
+    color-scheme: light dark;
+  }
 
-	html {
-		font-family: "Onest Variable", system-ui, sans-serif;
-	}
+  html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+  }
 
-	body {
-	}
-	
-	a {
-	}
+  body {
+  }
 
-	h1 {
-		@apply text-black dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-col gap-x-4
-	}
+  a {
+  }
 
-	h2 {
-		@apply font-normal py-2.5 text-xl text-gray-600 dark:text-white
-	}
+  h1 {
+    @apply text-black dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex-col gap-x-4;
+  }
 
+  h2 {
+    @apply font-normal py-2.5 text-xl text-gray-600 dark:text-white;
+  }
 
-	@media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-	}
-	
-	@media (prefers-color-scheme: dark) {
-		body {
-			/* background-color: black; */
-			/*color: rgba(255, 255, 255, 0.9);*/
-		}
-	}
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      /* background-color: black; */
+      /*color: rgba(255, 255, 255, 0.9);*/
+    }
+  }
 </style>
