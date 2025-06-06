@@ -12,12 +12,14 @@ import ContactPill from "../components/ContactPill.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import mainImage from "../images/mainImage.png";
+import SkipLink from "../components/SkipLink.astro";
 
 const sectionClasses =
   "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl";
 ---
 
-<Layout title="Portfolio eloice">
+<Layout lang="ca" title="Portfolio Eloi Casamayor Esteve">
+  <SkipLink lang="ca" />
   <Header lang="ca" />
   <main class="px-3 lg:px-4">
     <section id="top" class={sectionClasses}>
@@ -28,11 +30,7 @@ const sectionClasses =
       />
 
       <h1>Hola, sóc l'Eloi Casamayor Esteve</h1>
-      <a
-        class="pb-10 text-center"
-        href="http://www.linkedin.com/in/eloicasamayor"
-        ><Badge>Disponible per a treballar</Badge></a
-      >
+      <Badge>Disponible per a treballar</Badge>
       <h2>
         <b class="text-rose-600">8 anys d'experiència</b> com a desenvolupador. Ara
         em dedico al desenvolupament frontend amb <b class="text-rose-600"

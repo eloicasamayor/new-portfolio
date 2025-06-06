@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Badge from "../../components/Badge.astro";
-import FileMessage from "../../components/FileMessage.astro";
 import Linkedin from "../../icons/Linkedin.astro";
 import Github from "../../icons/Github.astro";
 import Mail from "../../icons/Mail.astro";
@@ -13,12 +12,14 @@ import ContactPill from "../../components/ContactPill.astro";
 import Experience from "../../components/Experience.astro";
 import Projects from "../../components/Projects.astro";
 import mainImage from "../../images/mainImage.png";
+import SkipLink from "../../components/SkipLink.astro";
 
 const sectionClasses =
   "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl";
 ---
 
-<Layout title="Portfolio eloice">
+<Layout lang="en" title="Portfolio Eloi Casamayor Esteve">
+  <SkipLink lang="en" />
   <Header lang="en" />
   <main class="px-3 lg:px-4">
     <section id="top" class={sectionClasses}>
@@ -29,11 +30,7 @@ const sectionClasses =
       />
 
       <h1>Hello, I am Eloi Casamayor Esteve</h1>
-      <a
-        class="pb-10 text-center"
-        href="http://www.linkedin.com/in/eloicasamayor"
-        ><Badge>Available for work</Badge></a
-      >
+      <Badge>Available for work</Badge>
       <h2>
         <b class="text-rose-600">8 years of experience</b> as a developer. Now I
         am dedicated to frontend development with <b class="text-rose-600"

@@ -1,0 +1,11 @@
+---
+const getSkipLinkText = (lang: "ca" | "es" | "en") => {
+  if (lang === "es") return "Saltar al contenido principal";
+  if (lang === "en") return "Skip to main content";
+  return "Saltar al contingut principal";
+};
+---
+
+<a href="#top" class="sr-only focus:not-sr-only">
+  {getSkipLinkText(Astro.props.lang)}
+</a>

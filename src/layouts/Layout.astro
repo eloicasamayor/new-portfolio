@@ -3,13 +3,14 @@ import "@fontsource-variable/onest";
 
 interface Props {
   title: string;
+  lang: "en" | "es" | "ca";
 }
 
-const { title } = Astro.props;
+const { title, lang } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
