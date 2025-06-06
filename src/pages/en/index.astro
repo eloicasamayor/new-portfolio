@@ -1,62 +1,67 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Badge from '../../components/Badge.astro';
-import FileMessage from '../../components/FileMessage.astro'
-import Linkedin from '../../icons/Linkedin.astro';
-import Github from '../../icons/Github.astro';
-import Mail from '../../icons/Mail.astro';
-import Download from '../../icons/Download.astro';
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/Badge.astro";
+import FileMessage from "../../components/FileMessage.astro";
+import Linkedin from "../../icons/Linkedin.astro";
+import Github from "../../icons/Github.astro";
+import Mail from "../../icons/Mail.astro";
+import Download from "../../icons/Download.astro";
 
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import ContactPill from '../../components/ContactPill.astro';
-import Experience from '../../components/Experience.astro';
-import Projects from '../../components/Projects.astro';
-import mainImage from '../../images/mainImage.png'
-import Image from 'astro/components/Image.astro';
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ContactPill from "../../components/ContactPill.astro";
+import Experience from "../../components/Experience.astro";
+import Projects from "../../components/Projects.astro";
+import mainImage from "../../images/mainImage.png";
 
-const sectionClasses = "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+const sectionClasses =
+  "section pt-12 md:pt-20 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl";
 ---
-<Layout title="Portfolio eloice">
-	<Header lang='en'></Header>
-	<main class="px-3 lg:px-4">
-		<section id="top" class={sectionClasses}>
 
-			<img
-				src={mainImage.src}
-				class="rounded-full w-24 h-24border-4 bg-rose-100"
-				alt="photo of Eloi Casamayor Esteve">
-						
-			<h1>
-				Hello, I am Eloi Casamayor Esteve
-			</h1>
-			<a class="pb-10 text-center" href="http://www.linkedin.com/in/eloicasamayor"><Badge>Available for work</Badge></a>
-			<h2>
-				<b class="text-rose-600">8 years of experience</b> as a developer. Now I am dedicated to frontend development with <b class="text-rose-600">TypeScript and React</b>. I have previously developed with C# using Unity.
-			</h2>
-			
-			<nav class="grid grid-cols-1 md:grid-cols-4 gap-2 sm:grid-cols-2">
-				<ContactPill href="http://www.linkedin.com/in/eloicasamayor">
-					<Linkedin class="w-6 h-6"/> Linkedin
-				</ContactPill>
-				<ContactPill href="http://www.github.com/eloicasamayor">
-					<Github  class="w-6 h-6"/> GitHub
-				</ContactPill>
-				<ContactPill href="mailto:eloi.casamayor@gmail.com">
-					<Mail  class="w-6 h-6"/> Email
-				</ContactPill>
-				<ContactPill href="#">
-					<Download  class="w-5 h-5"/> Currículum Vitae
-				</ContactPill>
-			</nav>
-					
-		</section>
-		<section id="experience" class={sectionClasses}>
-			<Experience lang='en' />
-		</section>
-		<section id="projects" class={sectionClasses}>
-			<Projects lang='en' />
-		</section>
-		<Footer lang='en'/>
-	</main>
+<Layout title="Portfolio eloice">
+  <Header lang="en" />
+  <main class="px-3 lg:px-4">
+    <section id="top" class={sectionClasses}>
+      <img
+        src={mainImage.src}
+        class="rounded-full w-24 h-24border-4 bg-rose-100"
+        alt="photo of Eloi Casamayor Esteve"
+      />
+
+      <h1>Hello, I am Eloi Casamayor Esteve</h1>
+      <a
+        class="pb-10 text-center"
+        href="http://www.linkedin.com/in/eloicasamayor"
+        ><Badge>Available for work</Badge></a
+      >
+      <h2>
+        <b class="text-rose-600">8 years of experience</b> as a developer. Now I
+        am dedicated to frontend development with <b class="text-rose-600"
+          >TypeScript and React</b
+        >. I have previously developed with C# using Unity.
+      </h2>
+
+      <nav class="grid grid-cols-1 md:grid-cols-4 gap-2 sm:grid-cols-2">
+        <ContactPill href="http://www.linkedin.com/in/eloicasamayor">
+          <Linkedin class="w-6 h-6" /> Linkedin
+        </ContactPill>
+        <ContactPill href="http://www.github.com/eloicasamayor">
+          <Github class="w-6 h-6" /> GitHub
+        </ContactPill>
+        <ContactPill href="mailto:eloi.casamayor@gmail.com">
+          <Mail class="w-6 h-6" /> Email
+        </ContactPill>
+        <ContactPill href="#">
+          <Download class="w-5 h-5" /> Currículum Vitae
+        </ContactPill>
+      </nav>
+    </section>
+    <section id="experience" class={sectionClasses}>
+      <Experience lang="en" />
+    </section>
+    <section id="projects" class={sectionClasses}>
+      <Projects lang="en" />
+    </section>
+    <Footer lang="en" />
+  </main>
 </Layout>

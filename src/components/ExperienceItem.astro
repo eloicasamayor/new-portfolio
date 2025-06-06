@@ -39,10 +39,11 @@ const getFrom = (lang: Language) => {
         <>
           {getTo(Astro.props.lang as Language)}
           <time datetime={`${date.to}-00T00:00:00`}>
-            {toDate.toLocaleString(Astro.props.lang, {
-              month: "long",
-              year: "numeric",
-            })}
+            {toDate &&
+              toDate.toLocaleString(Astro.props.lang, {
+                month: "long",
+                year: "numeric",
+              })}
           </time>
         </>
       )
